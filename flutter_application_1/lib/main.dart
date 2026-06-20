@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/homescreen.dart';
+import 'package:flutter_application_1/my%20home.dart';
 import 'package:flutter_application_1/pagehome.dart';
+import 'package:flutter_application_1/phon.dart';
 import 'package:flutter_application_1/profile.dart';
 
 void main() {
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:Pagehome()
+      home:Myhome()
     
 
     );
