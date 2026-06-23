@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/homescreen.dart';
+import 'package:flutter_application_1/list_views_example.dart';
+import 'package:flutter_application_1/login.dart';
 import 'package:flutter_application_1/my%20home.dart';
-import 'package:flutter_application_1/pagehome.dart';
-import 'package:flutter_application_1/phon.dart';
-import 'package:flutter_application_1/profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,12 +32,8 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:Myhome()
-    
-
+      home: Smarthome(),
     );
   }
 }
-

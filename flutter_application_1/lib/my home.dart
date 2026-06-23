@@ -1,145 +1,339 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class myhome extends  StatelessWidget{
- const myhome({super.key});
+class Smarthome extends StatelessWidget {
+  const Smarthome({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-               backgroundColor: const Color.fromARGB(209, 237, 234, 234),
-               appBar: AppBar(
-                backgroundColor: Colors.white,
-                centerTitle: true,
-                title: Text(
-                  "My Home",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold
-                    
-                  ),
-                  ),
-                
-    
-                leading: const Icon(Icons.menu,color: Colors.black,),
-               actions: [
-                Padding(padding: const EdgeInsets.only(right: 15),
-                child: CircleAvatar(
-                  backgroundColor: Colors.green,
-                  child: Text("MS"),
-                
-                ),
-  
-                )
-                
-               ],
-    
-
-                    
-
-               ),
-               body: Padding(padding: const EdgeInsets.all(20),
-               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("wednesday,june 20",
-                  style: TextStyle(color: CupertinoColors.inactiveGray),),
-                  Text(
-                  "Good evening Malak!",
-                         style: TextStyle(
-                         color: Colors.black,
-                               fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                         ),
-                        
-  ),
-  Text("You have 3 rooms active and 12 devices running right now.",
-  style: TextStyle(color: CupertinoColors.systemGrey),
-
-  ),
-
-  
-                
-
-    
-
-           const SizedBox(height: 30),
-
-            Row(
-
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-              children: const [
-
-                Text(
-
-                  "Rooms",
-
-                  style: TextStyle(
-
-                    fontSize: 24,
-                    color: Color.fromARGB(255, 15, 101, 141),
-
-                    fontWeight: FontWeight.bold,
-
-                  ),
-
-                ),
-
-                Text(
-
-                  "See all",
-
-                  style: TextStyle(color: Colors.green),
-
-                )
-
-              ],
-
+      appBar: AppBar(
+        title: const Text("Home page"),
+        backgroundColor: const Color.fromARGB(255, 3, 114, 32),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.person,
+              color: Color.fromARGB(255, 241, 235, 47),
             ),
-            const SizedBox(height: 50),
-            Card(
-              child: Padding(
-                    padding: EdgeInsets.all(30),
-                    child: Column(
-                      children: [
-                        Text("22 c"),
-                        Text("inside",selectionColor: Color.fromARGB(17, 6, 0, 0),),
-                     Icon(Icons.thermostat, color: const Color.fromARGB(255, 222, 38, 51),size: 30,),
+          ),
+        ],
+      ),
 
-                      ],
-            )
-              ))
-              
-                ]  
-                
-               )  
-               ) 
-              , bottomNavigationBar: BottomNavigationBar(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(color: Colors.green),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.person, size: 40, color: Colors.green),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    "Malk Sayed",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text("Home"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text("Settings"),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
+
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.grey, width: 2),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Wednesday, June 20",
+                  style: TextStyle(fontSize: 13, color: Colors.blueGrey),
+                ),
+
+                const SizedBox(height: 4),
+
+                const Text(
+                  "Good Evening Malak",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+
+                const SizedBox(height: 4),
+
+                const Text(
+                  "You have 3 rooms active and 12 devices running right now",
+                  style: TextStyle(fontSize: 13, color: Colors.blueGrey),
+                ),
+
+                const SizedBox(height: 20),
+
+                Row(
+                  children: [
+                    Expanded(
+                      child: InfoCard(
+                        icon: Icons.thermostat,
+                        iconColor: Colors.redAccent,
+                        value: "22°C",
+                        label: "Inside",
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: InfoCard(
+                        icon: Icons.wb_sunny,
+                        iconColor: Colors.orange,
+                        value: "18°C",
+                        label: "Outside",
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: InfoCard(
+                        icon: Icons.water_drop,
+                        iconColor: Colors.blue,
+                        value: "58%",
+                        label: "Humidity",
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 25),
+
+                Row(
+                  children: [
+                    const Text(
+                      "Rooms",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Text(
+                        "See all",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 5, 104, 51),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 12),
+
+                const RoomCard(
+                  imagePath: "assets/images/Image (Bedroom).png",
+                  roomName: "Bedroom",
+                  devices: "2 Devices",
+                ),
+
+                const SizedBox(height: 10),
+
+                const RoomCard(
+                  imagePath: "assets/images/Container (1).png",
+                  roomName: "Living Room",
+                  devices: "5 Devices",
+                ),
+
+                const SizedBox(height: 10),
+
+                const RoomCard(
+                  imagePath: "assets/images/Container (1).png",
+                  roomName: "Kitchen",
+                  devices: "3 Devices",
+                ),
+
+                const SizedBox(height: 25),
+
+                const Text(
+                  "Devices",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+
+                const SizedBox(height: 15),
+
+                GridView.count(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 1,
+                  children: const [
+                    DeviceCard(
+                      title: "Main Light",
+                      icon: Icons.lightbulb_outline,
+                    ),
+                    DeviceCard(title: "Thermostat", icon: Icons.thermostat),
+                    DeviceCard(title: "AC Unit", icon: Icons.air),
+                    DeviceCard(title: "Front Door", icon: Icons.lock_outline),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: 0,
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: "",
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
+        ],
+      ),
+    );
+  }
+}
+
+class InfoCard extends StatelessWidget {
+  final IconData icon;
+  final Color iconColor;
+  final String value;
+  final String label;
+
+  const InfoCard({
+    super.key,
+    required this.icon,
+    required this.iconColor,
+    required this.value,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: BorderSide(color: Colors.grey.shade300),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Column(
+          children: [
+            Icon(icon, color: iconColor, size: 22),
+            const SizedBox(height: 8),
+            Text(
+              value,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class RoomCard extends StatelessWidget {
+  final String imagePath;
+  final String roomName;
+  final String devices;
+
+  const RoomCard({
+    super.key,
+    required this.imagePath,
+    required this.roomName,
+    required this.devices,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: ListTile(
+        leading: Image.asset(imagePath),
+        title: Text(roomName),
+        subtitle: Text(devices),
+        trailing: const Icon(Icons.arrow_forward_ios),
+      ),
+    );
+  }
+}
+
+class DeviceCard extends StatefulWidget {
+  final String title;
+  final IconData icon;
+
+  const DeviceCard({super.key, required this.title, required this.icon});
+
+  @override
+  State<DeviceCard> createState() => _DeviceCardState();
+}
+
+class _DeviceCardState extends State<DeviceCard> {
+  bool isOn = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          isOn = !isOn;
+        });
+      },
+      child: Card(
+        color: isOn ? Colors.green.shade900 : Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(
+                widget.icon,
+                size: 35,
+                color: isOn ? Colors.white : Colors.black,
+              ),
+              const Spacer(),
+              Text(
+                widget.title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: isOn ? Colors.white : Colors.black,
+                ),
+              ),
+              Text(
+                isOn ? "ON" : "OFF",
+                style: TextStyle(color: isOn ? Colors.white70 : Colors.grey),
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "",    
-          )
-        ]            
-      )  );
-               
-    
-  
+        ),
+      ),
+    );
   }
 }
